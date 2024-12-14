@@ -3,12 +3,14 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock() # create a clock object to help control the frame rate
     dt = 0 # initialize the delta time variable
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # create a player object
 
     print("Starting asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -20,8 +22,14 @@ def main():
                 return
             
         screen.fill("black") # fill the screen with black color
+        player.draw(screen) # draw the player
         pygame.display.flip() # update the display
         dt = clock.tick(60) / 1000 # limit the frame rate to 60 fps
+        
+        
+    
+   
+    
 
 
 if __name__ == "__main__":
