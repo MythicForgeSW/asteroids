@@ -3,8 +3,10 @@
 # throughout this file
 import pygame
 from constants import *
-from player import Player
-
+from player import *
+updateable = pygame.sprite.Group()
+drawable = pygame.sprite.Group()
+Player.groups = updateable, drawable
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
