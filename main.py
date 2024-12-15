@@ -44,17 +44,23 @@ def main():
         for sprite in updatable: # update all the sprites in the updatable group
             sprite.update(dt)
 
-        for sprite in asteroids:
-            if player.check_collision(sprite):
+        for sprite in asteroids: # check for collisions between the player and the asteroids
+            if sprite.collides_with(player):
                 print("Game Over!")
-                return SystemExit
-    
+                SystemExit()
+            for shot in shots:
+                if sprite.collides_with(shot):
+                    sprite.kill()
+                    shot.kill()
+
+
         screen.fill("black") # fill the screen with black color
 
-        for sprite in drawable: # draw all the sprites in the drawable group
-            sprite.draw(screen)
+        for obj in drawable: # draw all the sprites in the drawable group
+            obj.draw(screen)
 
         pygame.display.flip() # update the display with the new screen
+
         dt = clock.tick(60) / 1000 # limit the frame rate to 60 fps and get the time passed since the last frame
 
 if __name__ == "__main__":
