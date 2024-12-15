@@ -4,9 +4,9 @@
 import pygame
 from constants import *
 from player import *
-updateable = pygame.sprite.Group()
+updatable = pygame.sprite.Group()
 drawable = pygame.sprite.Group()
-Player.groups = updateable, drawable
+Player.containers = (updatable, drawable)
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -23,9 +23,14 @@ def main():
             if event.type == pygame.QUIT: # if the user clicks the close button
                 return
             
+        for sprite in updatable: # update all the sprites in the updatable group
+            sprite.update(dt)
+
         screen.fill("black") # fill the screen with black color
-        player.update(dt) # update the player object with the delta time before rendering
-        player.draw(screen) # draw the player object on the screen
+
+        for sprite in drawable: # draw all the sprites in the drawable group
+            sprite.draw(screen)
+
         pygame.display.flip() # update the display with the new screen
         dt = clock.tick(60) / 1000 # limit the frame rate to 60 fps and get the time passed since the last frame
 
