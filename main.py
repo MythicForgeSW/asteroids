@@ -24,10 +24,10 @@ def main():
     Asteroid.containers = (updatable, drawable, asteroids)
     AsteroidField.containers = updatable
     Shot.containers = (updatable, drawable, shots)
-    
+    asteroid_field = AsteroidField() # create an asteroid field object
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # create a player object
-    asteroid_field = AsteroidField() # create an asteroid field object
+    
 
     dt = 0 # initialize the delta time variable
     
