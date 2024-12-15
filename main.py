@@ -22,15 +22,10 @@ def main():
                 return
             
         screen.fill("black") # fill the screen with black color
-        player.draw(screen) # draw the player
-        pygame.display.flip() # update the display
-        dt = clock.tick(60) / 1000 # limit the frame rate to 60 fps
-        
-        
-    
-   
-    
-
+        player.update(dt) # update the player object with the delta time before rendering
+        player.draw(screen) # draw the player object on the screen
+        pygame.display.flip() # update the display with the new screen
+        dt = clock.tick(60) / 1000 # limit the frame rate to 60 fps and get the time passed since the last frame
 
 if __name__ == "__main__":
     main()
