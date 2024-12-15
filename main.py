@@ -40,6 +40,11 @@ def main():
         for sprite in updatable: # update all the sprites in the updatable group
             sprite.update(dt)
 
+        for sprite in asteroids:
+            if player.check_collision(sprite):
+                print("Game Over!")
+                return SystemExit
+    
         screen.fill("black") # fill the screen with black color
 
         for sprite in drawable: # draw all the sprites in the drawable group
