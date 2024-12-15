@@ -9,6 +9,6 @@ ASTEROID_MAX_RADIUS = ASTEROID_MIN_RADIUS * ASTEROID_KINDS # pixels
 PLAYER_RADIUS = 20 # pixels
 PLAYER_TURN_SPEED = 300  # degrees per second
 PLAYER_SPEED = 200 # pixels per second
-PLAYER_FIRE_RATE = 500  # milliseconds
+PLAYER_SHOOT_SPEED = 5000  # pixels per second
 
 SHOT_RADIUS = 5 # pixels
