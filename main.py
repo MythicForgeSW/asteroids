@@ -3,16 +3,24 @@
 # throughout this file
 import pygame
 from constants import *
-from player import *
-updatable = pygame.sprite.Group()
-drawable = pygame.sprite.Group()
-Player.containers = (updatable, drawable)
+from player import Player
+from asteroid import Asteroid
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock() # create a clock object to help control the frame rate
-    dt = 0 # initialize the delta time variable
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # create a player object
+
+    # sprite groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+    Asteroid.containers = (updatable, drawable, asteroids)
+    
+    dt = 0 # initialize the delta time variable
+    
 
     print("Starting asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
